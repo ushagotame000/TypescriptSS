@@ -1,17 +1,15 @@
-import React from 'react'
-import Menu from '../types/Menu'
-import FoodData from '../types/FoodData'
+import React, { useState } from "react";
+import Menu from "../types/Menu";
+import FoodData from "../types/FoodData";
 
-const Home:React.FC = () => {
+const Home: React.FC = () => {
   return (
-<>
-<div className="container">
-<Menu/>
-<FoodData/>
-</div>
+    <>
+      <div className="container">
+        <FoodData />
+      </div>
+    </>
+  );
+};
 
-</>
-  )
-}
-
-export default Home
+export default Home;
