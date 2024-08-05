@@ -14,3 +14,9 @@ export interface ReusableButtonProps {
   onclick?: () => void;
   className?: string;
 }
+
+export interface ApiResponse<T> {
+  data: T;
+  message: string;
+  status: number;
+}
