@@ -1,5 +1,5 @@
 import React from "react";
-import { menu_list } from "../assets/assets";
+import { menu_list } from "../assets/assets"; // Import menu data
 
 export interface MenuItem {
   menu_name: string;
@@ -7,8 +7,9 @@ export interface MenuItem {
 }
 
 interface MenuProps {
-  onCategorySelect: (category: string) => void;
+  onCategorySelect: (category: string) => void; // Function to handle category selection
 }
+
 const Menu: React.FC<MenuProps> = ({ onCategorySelect }) => {
   return (
     <div className="menu-list flex flex-wrap justify-between">
@@ -16,7 +17,7 @@ const Menu: React.FC<MenuProps> = ({ onCategorySelect }) => {
         <div
           key={index}
           className="menu-item"
-          onClick={() => onCategorySelect(item.menu_name)}
+          onClick={() => onCategorySelect(item.menu_name)} // Set selected category
         >
           <img src={item.menu_image} alt={item.menu_name} />
           <h3>{item.menu_name}</h3>
