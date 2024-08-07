@@ -13,8 +13,8 @@ const useCategoryFilter = () => {
   useEffect(() => {
     const fetchFoodItems = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/api/food/list");
-        // const response = await axios api.get('/list');
+        // const response = await axios.get("http://localhost:5000/api/food/list");
+        const response = await api.get('/list');
         console.log(response.data);
 
         if (response.data.success) {
