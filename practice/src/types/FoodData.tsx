@@ -1,56 +1,45 @@
 import React from "react";
-import { foodItem } from "../types/Alltypes"; // Import type definitions
-import ReusableButton from "../component/ReusableButton"; // Import ReusableButton component
-import Menu from "../types/Menu"; // Import Menu component
-import { IoIosAdd } from "react-icons/io"; // Import Add icon
-import { RiSubtractLine } from "react-icons/ri"; // Import Subtract icon
-import useCategoryFilter from "../hooks/useCategoryFilter"; // Import custom hook for category filtering
-
+import { foodItem } from "../types/Alltypes"; 
+import ReusableButton from "../component/ReusableButton"; 
+import Menu from "../types/Menu"; 
+import { IoCart } from "react-icons/io5";
+import useCategoryFilter from "../hooks/useCategoryFilter"; 
 const FoodData: React.FC = () => {
-  const { filteredFoodList, setSelectedCategory, loading, error } =
+  const { filteredFoodList, setSelectedCategory} =
     useCategoryFilter(); // Destructure the return value from the custom hook
 
   return (
-    <div className="main">
+    <div className="main ring-2 p-5">
       <Menu onCategorySelect={setSelectedCategory} />{" "}
-      {/* Render the Menu component */}
-      {/* Display a loading spinner or message while data is being loaded */}
-      {loading ? (
-        <p>Loading...</p>
-      ) : error ? ( // Display an error message if there is an error
-        <p>{error}</p>
-      ) : (
-        <div className="food-list grid lg:grid-cols-4 gap-y-2 gap-x-2 md:grid-cols-3 sm:grid-cols-1">
+      
+        <div className="food-list grid lg:grid-cols-4 gap-y-2 gap-x-2 md:grid-cols-3 sm:grid-cols-1 bg-gray-100 mt-4">
           {filteredFoodList.map((item: foodItem) => (
-            <div key={item._id} className="food-item">
-              <img src={item.image} alt={item.name} />
+            <div  key={item._id} className="food-item bg-white rounded-xl transform transition-all hover:translate-y-2 duration-300 shadow-lg hover:shadow-2xl mt-4 mb-4 lg:mt-0 ">
+              {/* <img src={item.image} alt={item.name} /> */}
+              <img  src= {item.image} alt={item.name} />
+             
               <h3>{item.name}</h3>
-              <p>{item.description}</p>
+              <p className="text-sm">{item.description}</p>
               <p>
                 <strong>Category:</strong> {item.category}
               </p>
-              <p>
-                <strong>Price:</strong> ${item.price}
+              <p className=" mt-3 mb-0 text-lg">
+                <strong>Price:</strong> Rs.{item.price}
               </p>
-              <div className="items-end">
+              <div className="flex justify-end">
+               
                 <ReusableButton
-                  text="Add to Cart"
-                  icon={IoIosAdd}
-                  onClick={() => console.log("Added")}
-                />
-                <ReusableButton
-                  text="Remove"
-                  icon={RiSubtractLine}
-                  onClick={() => console.log("Deleted")}
+                  text="Add"
+                  icon={IoCart}
+                  onClick={() => console.log(`Added ${item.name} to the cart`)}
                 />
               </div>
             </div>
           ))}
         </div>
-      )}
+      
     </div>
   );
   
 };
-
 export default FoodData;

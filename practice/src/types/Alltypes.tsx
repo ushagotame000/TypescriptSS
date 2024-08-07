@@ -5,6 +5,7 @@ export interface foodItem {
   price: number;
   description: string;
   category: string;
+  // url:string;
 }
 
 export interface ReusableButtonProps {
